@@ -1,2 +1,4 @@
-sample_python_rabbitmq
-======================
+Python RabbitMQ Sample
+=====================
+
+Tests RabbitMQ via the Pika library.
