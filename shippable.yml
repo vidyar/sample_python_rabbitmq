@@ -20,3 +20,4 @@ script:
   - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+  - - curl -XPOST https://apibeta.shippable.com/projects/53be1f1a4606d01e00d9f693/build?token=$SHIPPABLE_API_TOKEN
