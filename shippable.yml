@@ -14,11 +14,14 @@ install:
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  
+env:
+secure: K7UwHhUQXsj/rUKuTX5MzUD1iAS543MsHFtuNdaA8rynpaX+3jm0Gq22wa1KeoMUNapv62OYNoHfBN9627ElAlqxFeAKo2SNJo64/LVHibrs9lzaQrWhl0w0WRQzhhDt0FISF6pf6YRjP2DsUvH1uhHVKZqGShsMdyjuBflLwo2qZlR1svi8bWUFDDiz092RHAl2loV+vmpvCCnFSza10/SpqmHyRjL804yAfugCO3qKvYPa5UY8B0KlLmTNpvxg9RMsWjUQOyZdUT6j0aFYs1F6UvKWWI4bx8BDKw2kpA42iyyr9tc6OJh7b17aPaQrOxXwr9Xb4IuuyMOSiur7pQ==
 archive: true
 
 script:
   - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
-  - curl -XPOST https://api.shippable.com/projects/53be1f1a4606d01e00d9f693/build?token=$SHIPPABLE_API_TOKEN
+  - echo $script
+  - echo $Branch
+  - echo $BUILD_NUMBER and $BUILD_URL and $COMMIT
