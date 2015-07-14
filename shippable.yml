@@ -25,3 +25,5 @@ script:
   - echo $Branch
   - echo $BUILD_NUMBER and $BUILD_URL and $COMMIT
 build_image: shippable/minv2
+after_success:
+  - git push -f git@heroku.com:php-mysql-heroku.git $BRANCH:master
